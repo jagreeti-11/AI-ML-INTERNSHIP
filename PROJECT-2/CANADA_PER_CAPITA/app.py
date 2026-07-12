@@ -2,8 +2,19 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-# Load Model
-model = joblib.load("canada_income_model.pkl")
+import os
+
+# Get the correct directory path where app.py is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "canada_income_model.pkl")
+
+# Load Model safely
+if os.path.exists(model_path):
+    model = joblib.load(model_path)
+else:
+    st.error(f"Could not find 'canada_income_model.pkl' in {BASE_DIR}. Please make sure you uploaded it to GitHub!")
+    st.stop()
+
 
 st.set_page_config(
     page_title="Canada Per Capita Income Prediction",
