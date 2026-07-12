@@ -2,8 +2,17 @@ import streamlit as st
 import joblib
 import numpy as np
 
-# Load trained model
-model = joblib.load("insurance_model.pkl")
+import os
+import joblib
+
+# Get the directory of the current script
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the correct absolute path to the model file
+model_path = os.path.join(BASE_DIR, "insurance_model.pkl")
+
+# Load the model
+model = joblib.load(model_path)
 
 # Page configuration
 st.set_page_config(
