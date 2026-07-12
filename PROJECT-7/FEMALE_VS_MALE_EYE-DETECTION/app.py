@@ -6,7 +6,7 @@ from PIL import Image
 
 st.title("👁 Female vs Male Eye Detection")
 
-model = tf.keras.models.load_model("gender_eye_model.keras")
+model = tf.keras.models.load_model("gender_eye_model.h5")
 
 uploaded_file = st.file_uploader("Upload Eye Image", type=["jpg", "jpeg", "png"])
 
