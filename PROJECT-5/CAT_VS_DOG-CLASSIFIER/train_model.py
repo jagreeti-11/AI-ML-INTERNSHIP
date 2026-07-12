@@ -4,13 +4,14 @@ import joblib
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
-# Dataset path
-dataset_path = r"D:\Shri Ram Swaroop Lucknow\Day 4 Course Material\Image Classification"
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+dataset_path = os.path.join(BASE_DIR, "Image Classification")
 
 images = []
 labels = []
 
-classes = [Cat, Dog]
+classes = ["Cat", "Dog"]
 
 IMG_SIZE = 64
 
