@@ -24,7 +24,7 @@ for label, folder in enumerate(classes):
 
         img = cv2.imread(img_path)
 
-        if img is None
+        if img is None:
             continue
 
         img = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
@@ -44,6 +44,6 @@ model = LogisticRegression(max_iter=1000)
 
 model.fit(X, y)
 
-joblib.dump(model, cat_dog_model.pkl)
+joblib.dump(model, "cat_dog_model.pkl")
 
 print(Model Saved Successfully!)
