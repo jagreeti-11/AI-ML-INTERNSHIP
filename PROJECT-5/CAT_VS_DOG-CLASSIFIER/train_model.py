@@ -4,7 +4,7 @@ import joblib
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
-import os
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 dataset_path = os.path.join(BASE_DIR, "Image Classification")
 
