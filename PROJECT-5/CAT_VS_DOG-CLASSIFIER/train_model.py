@@ -11,7 +11,7 @@ dataset_path = os.path.join(BASE_DIR, "Image Classification")
 images = []
 labels = []
 
-classes = ["Cat", "Dog"]
+classes = ["CAT", "DOG"]
 
 IMG_SIZE = 64
 
