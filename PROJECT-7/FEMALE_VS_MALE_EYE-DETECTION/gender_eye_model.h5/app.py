@@ -1,1 +1,37 @@
+import streamlit as st
+import tensorflow as tf
+import numpy as np
+from PIL import Image
 
+st.title("👁️ Female vs Male Eye Detection")
+
+
+import os
+
+# Get the path of the current directory where app.py is located
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, "gender_eye_model.h5")
+
+# Load the model
+model = tf.keras.models.load_model(model_path)
+uploaded_file = st.file_uploader("Upload Eye Image", type=["jpg", "jpeg", "png"])
+
+if uploaded_file is not None:
+    # 1. Open and display the image
+    img = Image.open(uploaded_file).convert("RGB")
+    st.image(img, caption="Uploaded Image", use_container_width=True)
+    
+    # 2. Preprocess the image to match model expectations
+    img = img.resize((64, 64))
+    img_array = tf.keras.utils.img_to_array(img)  # Safe and explicit Keras conversion
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array = img_array / 255.0
+    
+    # 3. Predict
+    prediction = model.predict(img_array)
+    
+    # 4. Display Result
+    if prediction[0][0] > 0.5:
+        st.success("Prediction: Male")
+    else:
+        st.success("Prediction: Female")
