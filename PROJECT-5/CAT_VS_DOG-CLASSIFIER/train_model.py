@@ -38,7 +38,7 @@ for label, folder in enumerate(classes):
 X = np.array(images)
 y = np.array(labels)
 
-print(Training Images, len(X))
+print('Training Images', len(X))
 
 model = LogisticRegression(max_iter=1000)
 
