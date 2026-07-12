@@ -14,7 +14,7 @@ classes = [Cat, Dog]
 
 IMG_SIZE = 64
 
-for label, folder in enumerate(classes)
+for label, folder in enumerate(classes):
 
     folder_path = os.path.join(dataset_path, folder)
 
