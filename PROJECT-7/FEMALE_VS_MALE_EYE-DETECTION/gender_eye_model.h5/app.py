@@ -10,6 +10,9 @@ import os
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(current_dir, "gender_eye_model.h5")
+# If GitHub turned it into a double folder, check inside it
+if not os.path.exists(model_path):
+    model_path = os.path.join(current_dir, "gender_eye_model.h5")
 
 # Force Keras to clear session bugs
 tf.keras.backend.clear_session()
