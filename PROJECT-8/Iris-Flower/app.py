@@ -21,7 +21,17 @@ df = pd.DataFrame(
 )
 
 # Load Trained KMeans Model
-model = joblib.load("kmeans_model.pkl")
+import os
+
+# Get the path where app.py is located
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, "kmeans_model.pkl")
+
+# Load the model using the absolute path
+if os.path.exists(model_path):
+    model = joblib.load(model_path)
+else:
+    st.error(f"⚠️ Model file not found. Looked for 'kmeans_model.pkl' at: {model_path}")
 
 # Predict Cluster for all flowers
 df["Cluster"] = model.predict(df)
