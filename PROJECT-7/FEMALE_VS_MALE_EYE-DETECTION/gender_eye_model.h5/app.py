@@ -8,13 +8,20 @@ st.title("👁️ Female vs Male Eye Detection")
 
 import os
 
-# Get the path of the current directory where app.py is located
 current_dir = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(current_dir, "gender_eye_model.h5")
 
-# Load the model
-model = tf.keras.models.load_model(model_path)
-uploaded_file = st.file_uploader("Upload Eye Image", type=["jpg", "jpeg", "png"])
+# Force Keras to clear session bugs
+tf.keras.backend.clear_session()
+
+# Try loading by bypassing rigid compilation checks
+try:
+    model = tf.keras.models.load_model(model_path, compile=False)
+except Exception as e:
+    try:
+        model = tf.keras.models.load_model(model_path)
+    except Exception as e2:
+        st.error(f"Model file structure issue. Details: {e2}")
 
 if uploaded_file is not None:
     # 1. Open and display the image
