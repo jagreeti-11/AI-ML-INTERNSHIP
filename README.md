@@ -9,3 +9,6 @@ https://ai-ml-internship-twe473zr9v69cchvbmjrz6.streamlit.app/
 
 PROJECT-4
 https://ai-ml-internship-gf5rgxrappt76ekg9pzka3w.streamlit.app/
+
+PROJECT-7
+https://ai-ml-internship-of9uyccvqjwpfv4yycm8v9.streamlit.app/
