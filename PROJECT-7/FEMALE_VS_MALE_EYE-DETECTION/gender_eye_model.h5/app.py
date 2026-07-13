@@ -4,6 +4,17 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 
+# --- Keras Version Compatibility Patch ---
+# This forces Keras to safely ignore the unrecognized 'batch_shape' and 'optional' arguments
+original_init = tf.keras.layers.InputLayer.__init__
+def patched_init(self, *args, **kwargs):
+    # Safely remove arguments that cause crashes in older/newer version mismatches
+    kwargs.pop('batch_shape', None)
+    kwargs.pop('optional', None)
+    original_init(self, *args, **kwargs)
+tf.keras.layers.InputLayer.__init__ = patched_init
+# ------------------------------------------
+
 st.title("👁️ Female vs Male Eye Detection")
 
 # 1. Get the path where app.py is located
